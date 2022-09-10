@@ -13,13 +13,14 @@
             {{ $post->title }}
         </h1>
         <p class="edit">[<a href="/posts/{{ $post->id }}/edit">edit</a>]</p>
-        <form action="/posts/{{ $post->id }}" id="form_{{ $post->id }}" method="post" style="display:inline">
+        <form action="/posts/{{ $post->id }}" id="form_delete" method="post">
             @csrf
             @method('DELETE')
-            <button type="submit" onclick="deletePost(this)">delete</button> 
+            <input type="submit" style="display:none">
+            <p class="delete">[<span onclick="deletePost(this);">delete</span>]</p>
         </form>
         <div class="content">
-            <div class="content__post">
+            <div class="content_post">
                 <h3>本文</h3>
                 <p>{{ $post->body }}</p> 
                 <p class="updated_at">{{ $post->updated_at }}</p>
@@ -31,8 +32,8 @@
         <script>
             function deletePost(e){
                 'use strict'
-                if(comfirm('削除すると復元できません。\n本当に削除しますか？')){
-                    document.getElementById('form_delet').submit();
+                if(confirm('削除すると復元できません。\n本当に削除しますか？')){
+                    document.getElementById("form_delete").submit();
                 }
             }
         </script>
