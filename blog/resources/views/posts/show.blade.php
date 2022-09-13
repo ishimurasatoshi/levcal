@@ -13,6 +13,7 @@
             {{ $post->title }}
         </h1>
         <p class="edit">[<a href="/posts/{{ $post->id }}/edit">edit</a>]</p>
+        <a href="">{{ $post->category->name }}</a>
         <form action="/posts/{{ $post->id }}" id="form_delete" method="post">
             @csrf
             @method('DELETE')
