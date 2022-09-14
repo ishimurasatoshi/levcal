@@ -25,6 +25,7 @@
                 <p>{{ $post->body }}</p> 
                 <p class="updated_at">{{ $post->updated_at }}</p>
             </div>
+            <a href="/categories/{{ $post->category->id }}">{{ $post->category->name }}</a>
         </div>
         <div class="footer">
             <a href="/">戻る</a>
